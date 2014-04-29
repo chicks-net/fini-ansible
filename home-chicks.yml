@@ -1,0 +1,29 @@
+---
+# This playbook creates chicks home directory based on github
+
+- hosts: $servername
+  sudo: True
+  tasks:
+   - name: install rpm's needed by users
+     yum: name={{ item }} state=present
+     with_items:
+      - httpd
+      - git
+      - mtr
+      - screen
+      - curl
+      - wget
+#      - tmux
+#      - whois
+   - user: name=chicks uid=501 comment="Christopher Hicks" groups=apache,wheel generate_ssh_key=yes ssh_key_bits=4096
+   - lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
+   - shell: "if [[ -e /home/chicks/.git ]]; then false; fi"
+     name: don't clobber git home already setup
+   - command: mv /home/chicks /home/chicks.orig
+   - git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks update=yes
+     name: git clone chicks-home
+   - command: chown -R chicks.chicks /home/chicks
+   - shell: mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh
+   - command: restorecon -vR /home/chicks
+   - command: chmod 700 /home/chicks/.ssh
+   - command: chmod 600 /home/chicks/.ssh/config
