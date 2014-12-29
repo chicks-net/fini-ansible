@@ -18,5 +18,5 @@ pa-chicks.marinsoftware.com
 chicks-inv0
 
 [pa-test:vars]
-ansible_ssh_user=ubuntu
-ansible_ssh_private_key_file=/home/chicks/.ssh/pa-chicks.pem
+#ansible_ssh_user=ubuntu
+#ansible_ssh_private_key_file=/home/chicks/.ssh/pa-chicks.pem
