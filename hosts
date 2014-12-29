@@ -13,3 +13,10 @@ dev0.mocentric.com
 
 [pa]
 pa-chicks.marinsoftware.com
+
+[pa-test]
+chicks-inv0
+
+[pa-test:vars]
+ansible_ssh_user=ubuntu
+ansible_ssh_private_key_file=/home/chicks/.ssh/pa-chicks.pem

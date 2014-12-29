@@ -5,7 +5,7 @@
   sudo: True
   tasks:
    - name: install rpm's needed by users
-     yum: name={{ item }} state=present
+     apt: name={{ item }} state=present
      with_items:
       - git
       - mtr
@@ -21,7 +21,7 @@
    - command: mv /home/chicks /home/chicks.orig
    - git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks update=yes
      name: git clone chicks-home
-   - command: chown -R chicks.chicks /home/chicks
+   - command: chown -R chicks.opsworks /home/chicks
    - shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"
      name: keep old ssh keys
    - command: restorecon -vR /home/chicks
