@@ -1,0 +1,37 @@
+---
+# This playbook install OCS::Inventory on ubuntu 14.04 LTS servers in AWS/opsworks
+
+- hosts: $servername
+  sudo: True
+  tasks:
+   - name: install packages needed by users
+     apt: name={{ item }} state=present
+     with_items:
+      - git
+      - git-svn
+      - mtr
+      - screen
+      - curl
+      - wget
+      - tmux
+      - vim-haproxy
+      - vim-scripts
+#      - whois
+   - name: install packages for OCS::Inventory
+     apt: name={{ item }} state=present
+     with_items:
+      - make
+      - mysql-server
+      - mysql-client
+      - apache2-bin
+      - libapache2-mod-perl2
+      - libxml-simple-perl
+#      - libcompress-zlib-perl
+      - libdbi-perl
+      - libdbd-mysql-perl
+      - libapache-dbi-perl
+      - libnet-ip-perl
+      - libsoap-lite-perl
+      - libphp-pclzip
+      - php5-gd
+## much more to do
