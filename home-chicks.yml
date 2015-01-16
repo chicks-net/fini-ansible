@@ -18,10 +18,10 @@
    - lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
    - shell: "if [[ -e /home/chicks/.git ]]; then false; fi"
      name: don't clobber git home already setup
-   - command: mv /home/chicks /home/chicks.orig
-   - git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks update=yes
+   - git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks-gitclone update=yes
      name: git clone chicks-home
-   - command: chown -R chicks.opsworks /home/chicks
+   - shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.opsworks /home/chicks"
+     name: swap chicks homes
    - shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"
      name: keep old ssh keys
    - command: restorecon -vR /home/chicks
