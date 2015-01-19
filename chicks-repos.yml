@@ -12,3 +12,5 @@
      git: repo=git@github.com:chicks-net/chicks-dnetc.git dest=/home/chicks/Documents/dnetc #update=yes
    - name: git clone quote-file
      git: repo=git@github.com:chicks-net/quote-file.git dest=/home/chicks/Documents/git/quote-file update=yes
+   - name: git clone PA cookbooks
+     git: repo=git@github.com:PerfectAudience/cookbooks.git dest=/home/chicks/Documents/git/cookbooks update=yes
