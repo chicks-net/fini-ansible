@@ -17,8 +17,10 @@
       - curl
       - wget
       - pcregrep
-   - user: name=chicks uid=2015 comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096
-   - lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
+   - name: user chicks
+     user: name=chicks uid=2015 comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096
+   - name: chicks in sudoers
+     lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
    - name: stat /home/chicks/.git
      stat: path="/home/chicks/.git"
      register: home_dot_git
