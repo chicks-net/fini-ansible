@@ -19,18 +19,18 @@
       - pcregrep
    - user: name=chicks uid=2015 comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096
    - lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
-   - stat: path="/home/chicks/.git"
+   - name: stat /home/chicks/.git
+     stat: path="/home/chicks/.git"
      register: home_dot_git
-     name: stat /home/chicks/.git
-   - fail: msg="there is already a git clone in your home"
+   - name: does /home/chicks/git exist?
+     fail: msg="there is already a git clone in your home"
      when: home_dot_git.stat.isdir is defined and home_dot_git.stat.isdir
-     name: does /home/chicks/git exist?
-   - git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks-gitclone update=yes
-     name: git clone chicks-home
-   - shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.opsworks /home/chicks"
-     name: swap chicks homes
-   - shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"
-     name: keep old ssh keys
+   - name: git clone chicks-home
+     git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks-gitclone update=yes
+   - name: swap chicks homes
+     shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.opsworks /home/chicks"
+   - name: keep old ssh keys
+     shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"
    - file: path=/home/chicks/.ssh mode=0700
    - file: path=/home/chicks/.ssh/config mode=0600
    - command: restorecon -vR /home/chicks
