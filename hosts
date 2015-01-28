@@ -16,6 +16,7 @@ pa-chicks.marinsoftware.com
 
 [pa-test]
 chicks-inv0
+inv1
 
 [pa-test:vars]
 #ansible_ssh_user=ubuntu

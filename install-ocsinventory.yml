@@ -34,4 +34,6 @@
       - libsoap-lite-perl
       - libphp-pclzip
       - php5-gd
+   - name: stop apache
+     service: name=apache2 state=stopped
 ## much more to do
