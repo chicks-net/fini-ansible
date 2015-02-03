@@ -2,4 +2,10 @@
 # This playbook fixes permissions in ~chicks
 - file: path=/home/chicks/.ssh mode=0700
 - file: path=/home/chicks/.ssh/config mode=0600
+
+- name: check for restorecon
+  shell: which restorecon
+  ignore_errors: True
+  register: have_restorecon
 - command: restorecon -vR /home/chicks
+  when: have_restorecon|success
