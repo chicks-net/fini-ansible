@@ -1,4 +1,10 @@
 ---
 - include: all-packages.yml
+
+# chicks
+- name: stat /home/chicks/.git
+  stat: path="/home/chicks/.git"
+  register: home_dot_git
 - include: home-chicks.yml
+  when: home_dot_git.stat.isdir is defined and ! home_dot_git.stat.isdir
 - include: chicks-perms.yml

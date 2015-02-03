@@ -10,6 +10,7 @@
 - name: chicks in sudoers
   lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
 
+# vestigial insurance
 - name: stat /home/chicks/.git
   stat: path="/home/chicks/.git"
   register: home_dot_git
