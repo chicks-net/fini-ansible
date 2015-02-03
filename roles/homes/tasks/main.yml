@@ -1,2 +1,3 @@
 ---
+- include: all-packages.yml
 - include: home-chicks.yml

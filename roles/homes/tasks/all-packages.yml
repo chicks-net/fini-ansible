@@ -1,0 +1,30 @@
+---
+# This playbook install packages that users want
+- name: install deb's needed by users
+  apt: name={{ item }} state=present
+  when: ansible_distribution == 'Ubuntu'
+  with_items:
+   - git
+   - git-svn
+   - tmux
+   - screen
+   - whois
+   - traceroute
+   - mtr
+   - curl
+   - wget
+   - pcregrep
+- name: install rpm's needed by users
+  yum: name={{ item }} state=present
+  when: ansible_distribution == 'CentOS'
+  with_items:
+   - git
+   - git-svn
+   - tmux
+   - screen
+   - whois
+   - traceroute
+   - mtr
+   - curl
+   - wget
+   - pcregrep
