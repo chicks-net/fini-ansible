@@ -3,6 +3,12 @@ ocs-inventory
 
 ansible role for install OCS inventory server
 
+Requires
+--------
+* Perl
+* PHP
+* mysql
+
 External docs
 -------------
 * [main site](http://www.ocsinventory-ng.org/en/)

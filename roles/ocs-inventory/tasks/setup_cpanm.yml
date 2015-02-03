@@ -1,0 +1,15 @@
+---
+# in ansible 1.6 we could simply do:
+#
+#- name: communication server Perl modules (1014)
+#  cpanm: from_path={{ install_rootdir }}/Apache
+#
+# but until then:
+
+- name: install cpanminus
+  apt: name={{ item }} state=present
+  with_items:
+   - cpanminus
+
+- name: communication server Perl modules (1014)
+  shell: "cpanm {{ install_rootdir }}/Apache"

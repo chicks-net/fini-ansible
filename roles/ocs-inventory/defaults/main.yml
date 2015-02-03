@@ -1,0 +1,60 @@
+mysql_root_password: MJacksonIsNotDead
+
+mysql_bind_address: 127.0.0.1
+mysql_port: 3306
+mysql_max_allowed_packet: '128M'
+
+modperl_version: 2
+
+apache_user: apache
+apache_group: apache
+
+ocs_mysql_user: ocs
+ocs_mysql_password: ocs
+
+ocs_com_srv_log: /var/log/ocsinventory-server
+ocs_com_srv_plugins_config_dir: "/etc/ocsinventory-server/plugins"
+ocs_com_srv_plugins_perl_dir: "/etc/ocsinventory-server/perl"
+
+logrotate_conf_dir: "/etc/logrotate.d"
+
+# Communication Server Apache configuration file
+com_server_apache_conf_file: "ocsinventory-server.conf" 
+
+# Communication Server logrotate configuration file
+com_server_logrotate_conf_file: "ocsinventory-server" 
+
+# Administration Console Apache configuration file
+adm_server_apache_conf_file: "ocsinventory-reports.conf"
+
+# Administration console read only files directory
+adm_server_static_dir: "/usr/share/ocsinventory-reports"
+adm_server_static_reports_dir: "ocsreports"
+adm_server_static_reports_dirfq: "{{ adm_server_static_dir}}/{{ adm_server_static_reports_dir}}"
+adm_server_phpdb_conf_file: "dbconfig.inc.php"
+adm_server_reports_alias: "/ocsreports"
+
+# Administration console read/write files dir
+adm_server_var_dir: "/var/lib/ocsinventory-reports"
+
+# Administration default packages directory and Apache alias
+adm_server_var_packages_dir: "download"
+adm_server_var_packages_dirfq: "{{ adm_server_var_dir}}/{{ adm_server_var_packages_dir}}"
+adm_server_packages_alias: "/download"
+
+# Administration default snmp directory and Apache alias
+adm_server_var_snmp_dir: "snmp"
+adm_server_var_snmp_dirfq: "{{ adm_server_var_dir}}/{{ adm_server_var_snmp_dir}}"
+adm_server_snmp_alias: "/snmp"
+
+# Administration console log files dir
+adm_server_var_logs_dir: "logs"
+adm_server_var_logs_dirfq: "{{ adm_server_var_dir}}/{{ adm_server_var_logs_dir}}"
+
+# Administration console scripts log files dir
+adm_server_var_scripts_logs_dir: "scripts"
+adm_server_var_scripts_logs_dirfq: "{{ adm_server_var_dir}}/{{ adm_server_var_scripts_logs_dir}}"
+
+# Administration console default ipdsicover-util.pl cache dir
+adm_server_var_ipd_dir: "ipd"
+adm_server_var_ipd_dirfq: "{{ adm_server_var_dir}}/{{ adm_server_var_ipd_dir}}"

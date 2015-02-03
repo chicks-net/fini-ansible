@@ -1,0 +1,60 @@
+---
+- name: stop apache because debian is a desktop distro
+  service: name=apache2 state=stopped
+
+- name: mkdir {{ install_tempdir }}
+  file: state=directory dest={{ install_tempdir }}
+
+- name: untar {{ ocs_tarball }}
+  unarchive: src={{ ocs_tarball }} dest={{ install_tempdir }}
+
+- name: communication server Perl modules (1014)
+  include: setup_cpanm.yml
+
+- name: communication server log directory (1072)
+  file: state=directory dest={{ ocs_com_srv_log }} owner={{ apache_user }} group={{ apache_group }} mode=0775
+
+- name: communication server logrotate (1121)
+  template: src="{{ com_server_logrotate_conf_file }}.j2" dest="{{ logrotate_conf_dir }}/{{ com_server_logrotate_conf_file }}" mode=0444
+
+- name: communication server plugins configuration directory (1148)
+  file: state=directory dest={{ ocs_com_srv_plugins_config_dir }} owner=root group=root mode=0775
+
+- name: communication server plugins directory (1167)
+  file: state=directory dest={{ ocs_com_srv_plugins_perl_dir }} owner=root group=root mode=0775
+
+- name: communication server apache config (1205)
+  template: src="{{ com_server_apache_conf_file }}.j2" dest="{{ apache_conf_dir }}/{{ com_server_apache_conf_file }}" mode=0444
+
+- name: admin server PHP directory (1387)
+  file: state=directory dest={{ adm_server_static_reports_dirfq }} owner=root group={{ apache_group }} mode=0775
+
+- name: admin server PHP files (1398) chown
+  file: state=directory recurse=yes dest="{{ install_rootdir }}/ocsreports/" owner=root group={{ apache_group }}
+
+- name: admin server PHP files (1398)
+  synchronize: src="{{ install_rootdir }}/ocsreports/" dest={{ adm_server_static_reports_dirfq }} perms=no
+
+- name: admin server PHP database config (1426)
+  template: src="{{ adm_server_phpdb_conf_file }}.j2" dest="{{ adm_server_static_reports_dirfq }}/{{ adm_server_phpdb_conf_file }}" mode=0444
+
+- name: ipdiscover directory (1450)
+  file: state=directory dest={{ adm_server_var_ipd_dirfq }} owner=root group={{ apache_group }} mode=0755
+
+- name: admin server packages directory (1490)
+  file: state=directory dest={{ adm_server_var_packages_dirfq }} owner=root group={{ apache_group }} mode=0755
+
+- name: admin server snmp mibs directory (1522)
+  file: state=directory dest={{ adm_server_var_snmp_dirfq }} owner=root group={{ apache_group }} mode=0755
+
+- name: admin server log directory (1552)
+  file: state=directory dest={{ adm_server_var_logs_dirfq }} owner=root group={{ apache_group }} mode=0775
+
+- name: admin server scripts log directory (1584)
+  file: state=directory dest={{ adm_server_var_scripts_logs_dirfq }} owner=root group={{ apache_group }} mode=0775
+
+- name: ipdiscover-util perl script (1613)
+  template: src="ipdiscover-util.pl.j2" dest="{{ adm_server_static_reports_dirfq }}/ipdiscover-util.pl" mode=0555
+
+- name: admin server apache config (1649)
+  template: src="{{ adm_server_apache_conf_file }}.j2" dest="{{ apache_conf_dir }}/{{ adm_server_apache_conf_file }}" mode=0444

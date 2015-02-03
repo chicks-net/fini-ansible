@@ -1,0 +1,10 @@
+---
+- name: set_fact chef_dir
+  set_fact: chef_dir="/var/lib/aws/opsworks/chef"
+
+- name: find latest opsworks Shared JSON
+  shell: cat {{chef_dir}}/$(ls {{chef_dir}} | grep json | tail -1)
+  register: chef_json
+
+- name: set_fact json
+  set_fact: json="{{ chef_json.stdout | from_json }}"

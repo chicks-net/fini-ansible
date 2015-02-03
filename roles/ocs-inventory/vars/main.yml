@@ -1,0 +1,11 @@
+mysql_root_password: "{{ lookup('password', '/tmp/passwordfile chars=ascii_letters,digits,hexdigits,punctuation') }}"
+
+install_tempdir: /tmp/ocsng_2.1.2_install
+install_rootdir: /tmp/ocsng_2.1.2_install/OCSNG_UNIX_SERVER-2.1.2
+ocs_tarball: OCSNG_UNIX_SERVER-2.1.2.tar.gz
+
+apache_user: www-data
+apache_group: www-data
+
+apache_conf_dir: /etc/apache2/conf-enabled
+logrorate_conf_dir: /etc/logrotate.d
