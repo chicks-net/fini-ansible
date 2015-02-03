@@ -1,16 +1,25 @@
 ---
 # This playbook sets up chicks' stock repos
+- name: touch /home/chicks/.ssh/known_hosts
+  file: path=/home/chicks/.ssh/known_hosts state=touch owner=chicks group=opsworks mode=0640
+- name: ssh recognize github.com
+  lineinfile: "dest=/home/chicks/.ssh/known_hosts state=present line='github.com,192.30.252.128 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ=='"
 
-- hosts: $servername
-  user: chicks
-  tasks:
-   - name: touch /home/chicks/.ssh/known_hosts
-     file: path=/home/chicks/.ssh/known_hosts state=touch owner=chicks group=opsworks mode=0640
-   - name: ssh recognize github.com
-     lineinfile: "dest=/home/chicks/.ssh/known_hosts state=present line='github.com,192.30.252.128 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ=='"
-   - name: git clone chicks-dnetc
-     git: repo=git@github.com:chicks-net/chicks-dnetc.git dest=/home/chicks/Documents/dnetc #update=yes
-   - name: git clone quote-file
-     git: repo=git@github.com:chicks-net/quote-file.git dest=/home/chicks/Documents/git/quote-file update=yes
-   - name: git clone PA cookbooks
-     git: repo=git@github.com:PerfectAudience/cookbooks.git dest=/home/chicks/Documents/git/cookbooks update=yes
+# clone once
+- name: stat /home/chicks/Documents/dnetc
+  stat: path="/home/chicks/Documents/dnetc"
+  register: home_docs_dnetc
+- name: git clone chicks-dnetc
+  git: repo=https://github.com/chicks-net/chicks-dnetc.git dest=/home/chicks/Documents/dnetc accept_hostkey=yes #update=yes
+  when: home_docs_dnetc.stat.isdir is defined and ! home_docs_dnetc.stat.isdir
+
+- name: git clone quote-file
+  git: repo=git@github.com:chicks-net/quote-file.git dest=/home/chicks/Documents/git/quote-file update=yes accept_hostkey=yes
+
+# clone once
+- name: stat /home/chicks/Documents/git/cookbooks
+  stat: path="/home/chicks/Documents/git/cookbooks"
+  register: home_docs_git_cookbooks
+- name: git clone PA cookbooks
+  git: repo=git@github.com:PerfectAudience/cookbooks.git dest=/home/chicks/Documents/git/cookbooks update=yes
+  when: home_docs_git_cookbooks.stat.isdir is defined and ! home_docs_git_cookbooks.stat.isdir

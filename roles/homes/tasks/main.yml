@@ -8,3 +8,4 @@
 - include: home-chicks.yml
   when: home_dot_git.stat.isdir is defined and ! home_dot_git.stat.isdir
 - include: chicks-perms.yml
+- include: chicks-repos.yml
