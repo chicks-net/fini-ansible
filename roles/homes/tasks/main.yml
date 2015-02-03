@@ -1,3 +1,4 @@
 ---
 - include: all-packages.yml
 - include: home-chicks.yml
+- include: chicks-perms.yml

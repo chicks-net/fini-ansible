@@ -1,0 +1,5 @@
+---
+# This playbook fixes permissions in ~chicks
+- file: path=/home/chicks/.ssh mode=0700
+- file: path=/home/chicks/.ssh/config mode=0600
+- command: restorecon -vR /home/chicks

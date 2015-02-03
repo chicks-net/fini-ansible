@@ -23,7 +23,3 @@
   shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.opsworks /home/chicks"
 - name: keep old ssh keys
   shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"
-
-- file: path=/home/chicks/.ssh mode=0700
-- file: path=/home/chicks/.ssh/config mode=0600
-- command: restorecon -vR /home/chicks
