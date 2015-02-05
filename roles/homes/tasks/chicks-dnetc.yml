@@ -1,0 +1,7 @@
+---
+# This playbook sets up chicks' dnetc
+- name: git clone chicks-dnetc
+  git: repo=https://github.com/chicks-net/chicks-dnetc.git dest=/home/chicks/Documents/dnetc accept_hostkey=yes #update=yes
+
+- name: dnetc.ini
+  template: src=dnetc.ini.j2 dest=/home/chicks/Documents/dnetc/dnetc.ini owner=chicks:wqjjkk mode=0444 

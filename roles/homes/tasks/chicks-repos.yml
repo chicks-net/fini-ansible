@@ -10,7 +10,7 @@
   stat: path="/home/chicks/Documents/dnetc"
   register: home_docs_dnetc
 - name: git clone chicks-dnetc
-  git: repo=https://github.com/chicks-net/chicks-dnetc.git dest=/home/chicks/Documents/dnetc accept_hostkey=yes #update=yes
+  include: chicks-dnetc.yml
   when: home_docs_dnetc.stat.isdir is defined and ! home_docs_dnetc.stat.isdir
 
 - name: git clone quote-file
