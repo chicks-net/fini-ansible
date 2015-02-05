@@ -1,7 +1,16 @@
 ---
 # This playbook sets up chicks' dnetc
 - name: git clone chicks-dnetc
-  git: repo=https://github.com/chicks-net/chicks-dnetc.git dest=/home/chicks/Documents/dnetc accept_hostkey=yes #update=yes
+  git: repo=https://github.com/chicks-net/chicks-dnetc.git dest={{ dnetc_dir }} accept_hostkey=yes #update=yes
+
+- name: git branch
+  shell: "cd {{ dnetc_dir }} ; git co -b {{ ansible_hostname }}"
 
 - name: dnetc.ini
-  template: src=dnetc.ini.j2 dest=/home/chicks/Documents/dnetc/dnetc.ini owner=chicks:wqjjkk mode=0444 
+  template: src=dnetc.ini.j2 dest={{ dnetc_ini }} owner=chicks mode=0444 
+
+- name: git add
+  shell: "cd {{ dnetc_dir }} ; git add dnetc.ini "
+
+- name: git commit
+  shell: "cd {{ dnetc_dir }} ; git commit -m 'log to {{ ansible_hostname }}_"
