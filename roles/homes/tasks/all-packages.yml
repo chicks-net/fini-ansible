@@ -6,6 +6,7 @@
   with_items:
    - git
    - git-svn
+   - ansible
    - tmux
    - screen
    - whois
@@ -20,6 +21,7 @@
   with_items:
    - git
    - git-svn
+   - ansible
    - tmux
    - screen
    - whois
