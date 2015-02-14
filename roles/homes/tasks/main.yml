@@ -6,6 +6,6 @@
   stat: path="/home/chicks/.git"
   register: home_dot_git
 - include: home-chicks.yml
-  when: home_dot_git.stat.isdir is defined and ! home_dot_git.stat.isdir
+  when: home_dot_git.stat.exists is defined and ! home_dot_git.stat.exists
 - include: chicks-perms.yml
 - include: chicks-repos.yml

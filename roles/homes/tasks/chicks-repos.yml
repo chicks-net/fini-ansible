@@ -11,7 +11,7 @@
   register: home_docs_dnetc
 - name: git clone chicks-dnetc
   include: chicks-dnetc.yml
-  when: home_docs_dnetc.stat.isdir is defined and ! home_docs_dnetc.stat.isdir
+  when: home_docs_dnetc.stat.exists is defined and ! home_docs_dnetc.stat.exists
 
 - name: git clone quote-file
   git: repo=git@github.com:chicks-net/quote-file.git dest=/home/chicks/Documents/git/quote-file update=yes accept_hostkey=yes
@@ -22,4 +22,4 @@
   register: home_docs_git_cookbooks
 - name: git clone PA cookbooks
   git: repo=git@github.com:PerfectAudience/cookbooks.git dest=/home/chicks/Documents/git/cookbooks update=yes
-  when: home_docs_git_cookbooks.stat.isdir is defined and ! home_docs_git_cookbooks.stat.isdir
+  when: home_docs_git_cookbooks.stat.exists is defined and ! home_docs_git_cookbooks.stat.exists
