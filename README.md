@@ -1,4 +1,10 @@
 fini-ansible
 ============
 
-FINI ansible scripts and configs
+[FINI](http://www.fini.net/) ansible playbooks
+
+roles
+-----
+
+* [homes](roles/homes)
+* [ocs-inventory](roles/ocs-inventory) - installs OCS::Inventory
