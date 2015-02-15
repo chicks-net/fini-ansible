@@ -4,7 +4,7 @@
   git: repo=https://github.com/chicks-net/chicks-dnetc.git dest={{ dnetc_dir }} accept_hostkey=yes #update=yes
 
 - name: git branch
-  shell: "cd {{ dnetc_dir }} ; git co -b {{ ansible_hostname }}"
+  shell: "cd {{ dnetc_dir }} ; git checkout -b {{ ansible_hostname }}"
 
 - name: dnetc.ini
   template: src=dnetc.ini.j2 dest={{ dnetc_ini }} owner=chicks mode=0444 
@@ -13,4 +13,4 @@
   shell: "cd {{ dnetc_dir }} ; git add dnetc.ini "
 
 - name: git commit
-  shell: "cd {{ dnetc_dir }} ; git commit -m 'log to {{ ansible_hostname }}_"
+  shell: "cd {{ dnetc_dir }} ; git commit -m 'log to {{ ansible_hostname }}_'"
