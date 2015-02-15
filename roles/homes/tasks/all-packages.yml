@@ -21,12 +21,12 @@
   with_items:
    - git
    - git-svn
-   - ansible
-   - tmux
+# epel   - ansible
+# repoforge   - tmux
    - screen
-   - whois
+   - jwhois
    - traceroute
    - mtr
    - curl
    - wget
-   - pcregrep
+   - pcre
