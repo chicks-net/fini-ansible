@@ -5,7 +5,7 @@
   user: name=chicks uid=2015 comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096
 - name: user chicks in centos/rhel
   when: ansible_distribution == 'CentOS'
-  user: name=chicks uid=500 comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096
+  user: name=chicks uid=500 group="{{ chicks_group }}" comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096
 
 - name: chicks in sudoers
   lineinfile: "dest=/etc/sudoers state=present line='chicks      ALL=(ALL)  NOPASSWD:ALL'"
@@ -13,14 +13,14 @@
 # vestigial insurance
 - name: stat /home/chicks/.git
   stat: path="/home/chicks/.git"
-  register: home_dot_git
-- name: does /home/chicks/git exist?
+  register: chicks_dot_git
+- name: does /home/chicks/.git exist?
   fail: msg="there is already a git clone in your home"
-  when: home_dot_git.stat.isdir is defined and home_dot_git.stat.isdir
+  when: chicks_dot_git.stat.exists is defined and chicks_dot_git.stat.exists
 
 - name: git clone chicks-home
   git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks-gitclone update=yes
 - name: swap chicks homes
-  shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.opsworks /home/chicks"
+  shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.{{ chicks_group }} /home/chicks"
 - name: keep old ssh keys
   shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"

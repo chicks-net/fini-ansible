@@ -1,11 +1,20 @@
 ---
 - include: all-packages.yml
 
+#
 # chicks
+#
+- name: default fact chicks_group
+  set_fact: chicks_group="chicks"
+- name: opsworks fact chicks_group
+  set_fact: chicks_group="opsworks"
+  when: ansible_distribution == 'Ubuntu'
+
 - name: stat /home/chicks/.git
   stat: path="/home/chicks/.git"
   register: home_dot_git
 - include: home-chicks.yml
-  when: home_dot_git.stat.exists is defined and ! home_dot_git.stat.exists
+  when: home_dot_git.stat.exists is defined and not home_dot_git.stat.exists
+
 - include: chicks-perms.yml
 - include: chicks-repos.yml
