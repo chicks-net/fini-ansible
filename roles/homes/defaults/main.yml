@@ -1,3 +1,2 @@
----
-- dnetc_dir: /home/chicks/Documents/dnetc
-- dnetc_ini: "{{ dnetc_dir }}"/dnetc.ini
+dnetc_dir: /home/chicks/Documents/dnetc
+dnetc_ini: "{{ dnetc_dir }}/dnetc.ini"
