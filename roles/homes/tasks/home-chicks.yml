@@ -22,5 +22,9 @@
   git: repo=https://github.com/chicks-net/chicks-home.git dest=/home/chicks-gitclone update=yes
 - name: swap chicks homes
   shell: "mv /home/chicks /home/chicks.orig && mv /home/chicks-gitclone /home/chicks && chown -R chicks.{{ chicks_group }} /home/chicks"
+- name: stat /home/chicks.orig/.ssh/id_rsa
+  stat: path="/home/chicks.orig/.ssh/id_rsa"
+  register: old_keys
 - name: keep old ssh keys
-  shell: "if [[ -e /home/chicks.orig/.ssh/id_rsa ]]; then mv /home/chicks.orig/.ssh/id_rsa* /home/chicks/.ssh; fi"
+  command: "mv /home/chicks.orig/.ssh/id_rsa /home/chicks.orig/.ssh/id_rsa.pub /home/chicks/.ssh"
+  when: old_keys.stat.exists
