@@ -16,10 +16,14 @@ dev0.mocentric.com
 
 [pa]
 pa-chicks.marinsoftware.com
+inv2
+dev2
 
 [pa-test]
 chicks-inv0
+chicks-rh0
 inv1
+img1
 
 [pa-test:vars]
 #ansible_ssh_user=ubuntu
