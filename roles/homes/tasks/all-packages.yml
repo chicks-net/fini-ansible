@@ -15,6 +15,7 @@
    - curl
    - wget
    - pcregrep
+   - libdatetime-perl
 - name: install rpm's needed by users
   yum: name={{ item }} state=present
   when: ansible_distribution == 'CentOS'
