@@ -6,7 +6,7 @@ fini-ansible
 roles
 -----
 
-* [sumpal](roles/dumpall) - dump ansible variable space into /tmp/amsible.all
+* [dumpall](roles/dumpall) - dump ansible variable space into /tmp/amsible.all
 * [homes](roles/homes)
 * [ocs-inventory](roles/ocs-inventory) - installs OCS::Inventory
 
