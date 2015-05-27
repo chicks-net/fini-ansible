@@ -18,12 +18,32 @@ dev0.mocentric.com
 pa-chicks.marinsoftware.com
 inv2
 dev2
+aardvark
+proxy01
+proxy02
+proxy03
+proxy04
+proxy05
+proxy06
+proxy07
+proxy08
+proxy09
+proxy10
+proxy11
+serv01
+serv02ubu12
+serv03
+serv04ubu12
+nagios1
+nagios2
 
 [pa-test]
 chicks-inv0
 chicks-rh0
 inv1
 img1
+lb14ubu ansible_ssh_host=54.146.64.191
+chicks-ftp
 
 [pa-test:vars]
 #ansible_ssh_user=ubuntu
