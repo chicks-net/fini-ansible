@@ -1,0 +1,9 @@
+---
+# This playbook creates chicks home directory based on github
+
+- hosts: $servername
+  remote_user: root
+  sudo: True
+  roles:
+   - homes
+   - dumpall
