@@ -1,0 +1,33 @@
+---
+- name: install packages needed by users
+  apt: name={{ item }} state=present
+  with_items:
+   - tmux
+   - screen
+   - git
+   - git-svn
+   - make
+   - vim-haproxy
+   - vim-scripts
+   - libdbi-perl
+   - libnet-ip-perl
+   - fping
+   - mtr
+   - curl
+   - wget
+- name: install apache then stop it
+  apt: name={{ item }} state=present
+  with_items:
+   - apache2
+   - apache2-bin
+   - apache2-doc
+   - apache2-utils
+#   - libapache2-mod-perl2
+  notify:
+          - stop apache
+- name: install smokeping then stop it
+  apt: name={{ item }} state=present
+  with_items:
+   - smokeping
+  notify:
+          - stop smokeping

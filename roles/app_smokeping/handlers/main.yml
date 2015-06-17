@@ -1,0 +1,14 @@
+# stop apache because debian thinks it is a desktop
+- name: stop apache
+  service: name=apache2 state=stopped   
+
+# stop smokeping until we configure it too
+- name: stop smokeping
+  service: name=smokeping state=stopped   
+
+# start apache and smokeping
+- name: start all the things
+  service: name={{ item }} state=started
+  with_items:
+    - apache2
+    - smokeping
