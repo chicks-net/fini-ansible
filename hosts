@@ -36,6 +36,7 @@ serv03
 serv04ubu12
 nagios1
 nagios2
+monperf-west-do ansible_ssh_host=162.243.134.20 # ansible_ssh_private_key_file=/home/chicks/.ssh/pa-do-chicks
 
 [pa-test]
 chicks-inv0
@@ -43,7 +44,10 @@ chicks-rh0
 inv1
 img1
 lb14ubu ansible_ssh_host=54.146.64.191
-chicks-ftp
+test-ftp
+
+[sw]
+uploads ansible_ssh_host=uploads.socialwire.com
 
 [pa-test:vars]
 #ansible_ssh_user=ubuntu
