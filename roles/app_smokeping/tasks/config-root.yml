@@ -18,11 +18,16 @@
 - name: symlink /etc/smokeping
   file: src={{ smokeping_config_pa_link_dir }} dest={{ smokeping_config_dir }} state=link
 
-#- name: git branch
-#  shell: "cd {{ dnetc_dir }} ; git checkout -b {{ ansible_hostname }}"
+#
+# apache config
+#
 
-#- name: git add
-#  shell: "cd {{ dnetc_dir }} ; git add dnetc.ini "
+- name: symlink /etc/apache2/conf-available/smokeping.conf
+  file: src={{ apache_config_src }} dest={{ apache_config_dest }} state=link
+  notify: start all the things
 
-#- name: git commit
-#  shell: "cd {{ dnetc_dir }} ; git commit -m 'log to {{ ansible_hostname }}_'"
+- name: a2enconf
+  shell: "a2enconf smokeping"
+
+- name: a2enmod
+  shell: "a2enmod cgid"

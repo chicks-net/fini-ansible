@@ -1,4 +1,6 @@
 smokeping_config_dir: /etc/smokeping
+apache_config_src: /etc/smokeping/apache2.conf
+apache_config_dest: /etc/apache2/conf-available/smokeping.conf
 
 smokeping_config_chicks_git: 'https://github.com/chicks-net/smokeping-config.git'
 smokeping_config_chicks_dir: /home/chicks/Documents/git/smokeping-config/
