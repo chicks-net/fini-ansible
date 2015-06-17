@@ -1,2 +1,8 @@
-smokeping_config_chicks: 'https://github.com/chicks-net/smokeping-config.git'
-smokeping_config_pa: git@github.com:PerfectAudience/pare.git
+smokeping_config_dir: /etc/smokeping
+
+smokeping_config_chicks_git: 'https://github.com/chicks-net/smokeping-config.git'
+smokeping_config_chicks_dir: /home/chicks/Documents/git/smokeping-config/
+
+smokeping_config_pa_git: git@github.com:PerfectAudience/pare.git
+smokeping_config_pa_dir: /home/chicks/Documents/git/pare/
+smokeping_config_pa_link_dir: /home/chicks/Documents/git/pare/smokeping-config/

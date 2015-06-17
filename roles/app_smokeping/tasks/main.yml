@@ -2,8 +2,11 @@
 #- include: opsworks_json.yml
 
 - include: packages.yml
-
+  sudo: True
 - meta: flush_handlers
 
-#- include: config.yml
+- include: config-chicks.yml
+- include: config-root.yml
+  sudo: True
+- meta: flush_handlers
 

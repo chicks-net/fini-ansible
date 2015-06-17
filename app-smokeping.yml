@@ -2,7 +2,7 @@
 # This playbook installs smokeping
 
 - hosts: $servername
-  sudo: True
+#  sudo: True
   roles:
    - app_smokeping
    - dumpall

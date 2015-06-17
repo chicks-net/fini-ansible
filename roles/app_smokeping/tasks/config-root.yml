@@ -1,0 +1,28 @@
+---
+# configures smokeping
+
+
+# don't blow away a git-based smokeping config
+- name: stat/etc/smokeping/.git 
+  stat: path="/etc/smokeping/.git"
+  register: smokeping_dot_git
+- name: does /etc/smokeping/.git exist?
+  fail: msg="there is already a git clone in your smokeping config"
+  when: smokeping_dot_git.stat.exists is defined and smokeping_dot_git.stat.exists
+
+- name: save stock smokeping config
+  shell: "mv {{ smokeping_config_dir }} /etc/smokeping.as_installed"
+
+# TODO: configurable switch between PA and chicks config
+
+- name: symlink /etc/smokeping
+  file: src={{ smokeping_config_pa_link_dir }} dest={{ smokeping_config_dir }} state=link
+
+#- name: git branch
+#  shell: "cd {{ dnetc_dir }} ; git checkout -b {{ ansible_hostname }}"
+
+#- name: git add
+#  shell: "cd {{ dnetc_dir }} ; git add dnetc.ini "
+
+#- name: git commit
+#  shell: "cd {{ dnetc_dir }} ; git commit -m 'log to {{ ansible_hostname }}_'"
