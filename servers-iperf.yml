@@ -10,3 +10,5 @@
   roles:
    - app_iperf
    - dumpall
+  tasks:
+   - include: roles/app_iperf/tasks/start_daemon.yml
