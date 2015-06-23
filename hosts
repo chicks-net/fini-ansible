@@ -37,6 +37,15 @@ serv04ubu12
 nagios1
 nagios2
 monperf-west-do ansible_ssh_host=162.243.134.20 # ansible_ssh_private_key_file=/home/chicks/.ssh/pa-do-chicks
+i01
+i02
+i03
+i04
+i05
+i06
+i07
+i08
+i09
 
 [pa-test]
 chicks-inv0
