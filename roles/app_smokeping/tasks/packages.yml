@@ -15,6 +15,7 @@
    - mtr
    - curl
    - wget
+
 - name: install apache then stop it
   apt: name={{ item }} state=present
   with_items:
@@ -25,9 +26,13 @@
 #   - libapache2-mod-perl2
   notify:
           - stop apache
+
 - name: install smokeping then stop it
   apt: name={{ item }} state=present
   with_items:
    - smokeping
   notify:
           - stop smokeping
+
+- name: install postfix
+  script: ../scripts/install_postfix.sh
