@@ -2,10 +2,10 @@
 # This playbook installs iperf
 
 - hosts:
-   - i01
-   - i02
-   - i04
-   - i05
+   - iperf2
+   - iperf3
+   - iperf4
+   - iperf5
 #  sudo: True
   roles:
    - app_iperf
