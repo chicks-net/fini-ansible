@@ -59,8 +59,8 @@ alcore0 ansible_ssh_host=54.174.107.103
 [pa-mon]
 monperf_eu ansible_ssh_host=54.247.6.168
 monperf_apac ansible_ssh_host=54.179.30.43
-#monperf_use ansible_ssh_host=54.82.56.187
-#monperf_use ansible_ssh_host=54.176.15.65
+monperf_use ansible_ssh_host=54.82.56.187
+monperf_usw ansible_ssh_host=54.176.15.65
 
 [pa-test]
 chicks-inv0

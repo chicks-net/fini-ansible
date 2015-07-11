@@ -6,6 +6,10 @@
 - name: stop smokeping
   service: name=smokeping state=stopped   
 
+# bounce smokeping to load new configuration
+- name: restart smokeping
+  service: name=smokeping state=restarted   
+
 # start apache and smokeping
 - name: start all the things
   service: name={{ item }} state=started

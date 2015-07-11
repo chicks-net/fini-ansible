@@ -1,0 +1,13 @@
+---
+# update git repos
+
+- name: git clone chicks smokeping config
+  git: repo={{ smokeping_config_chicks_git }} dest={{ smokeping_config_chicks_dir }} accept_hostkey=yes
+  notify:
+    - restart smokeping
+
+- name: git clone pare
+  git: repo={{ smokeping_config_pa_git }} dest={{ smokeping_config_pa_dir }} accept_hostkey=yes
+  notify:
+    - restart smokeping
+

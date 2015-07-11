@@ -1,0 +1,4 @@
+---
+# update git repos
+- include: update-git.yml
+- meta: flush_handlers

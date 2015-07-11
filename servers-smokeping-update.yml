@@ -1,0 +1,16 @@
+---
+# This playbook updates smokeping deployments
+
+- hosts:
+   - monperf_eu
+   - monperf_apac
+   - monperf_use
+   - monperf_usw
+#  sudo: True
+  handlers:
+   - include: roles/app_smokeping/handlers/main.yml
+  tasks:
+   - name: include variables
+     include_vars: roles/app_smokeping/vars/main.yml
+   - name: include smokeping update
+     include: roles/app_smokeping/tasks/main_update.yml
