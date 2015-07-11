@@ -1,11 +1,15 @@
 ---
 #- include: opsworks_json.yml
 
+# install packages
 - include: packages.yml
   sudo: True
 - meta: flush_handlers
 
+# setup git repos
 - include: config-chicks.yml
+
+# configure apache and symlinks
 - include: config-root.yml
   sudo: True
 - meta: flush_handlers
