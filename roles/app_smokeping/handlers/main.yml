@@ -9,6 +9,7 @@
 # bounce smokeping to load new configuration
 - name: restart smokeping
   service: name=smokeping state=restarted   
+  sudo: yes
 
 # start apache and smokeping
 - name: start all the things
