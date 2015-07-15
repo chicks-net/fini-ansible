@@ -4,7 +4,6 @@ boo.fini.net
 ralph.fini.net
 
 [desktop]
-bad.marinsoftware.com
 graphite.chicks.net
 silver.chicks.net
 rotten.chicks.net
@@ -15,64 +14,5 @@ panda.chicks.net
 dev0.mocentric.com
 
 # hostname ansible_ssh_host= ansible_ssh_private_key_file=
-[pa]
-pa-chicks.marinsoftware.com
-inv2
-dev2
-aardvark
-proxy01
-proxy02
-proxy03
-proxy04
-proxy05
-proxy06
-proxy07
-proxy08
-proxy09
-proxy10
-proxy11
-serv01
-serv02ubu12
-serv03
-serv04ubu12
-nagios1
-nagios2
-i01
-i02
-i03
-i04
-i05
-i06
-i07
-i08
-i09
-icore0 ansible_ssh_host=52.5.237.99
-icore1 ansible_ssh_host=52.1.71.168
-iperf2 ansible_ssh_host=54.208.139.147
-iperf3 ansible_ssh_host=54.209.49.83
-iperf4 ansible_ssh_host=54.172.204.173
-iperf5 ansible_ssh_host=52.4.213.33
-ubu12a ansible_ssh_host=54.165.3.54
-ubu12b ansible_ssh_host=54.174.29.27
-alcore0 ansible_ssh_host=54.174.107.103
-
-[pa-mon]
-monperf_eu ansible_ssh_host=54.247.6.168
-monperf_apac ansible_ssh_host=54.179.30.43
-monperf_use ansible_ssh_host=54.82.56.187
-monperf_usw ansible_ssh_host=54.176.15.65
-
-[pa-test]
-chicks-inv0
-chicks-rh0
-inv1
-img1
-lb14ubu ansible_ssh_host=54.146.64.191
-test-ftp
-
 [sw]
 uploads ansible_ssh_host=uploads.socialwire.com
-
-[pa-test:vars]
-#ansible_ssh_user=ubuntu
-#ansible_ssh_private_key_file=/home/chicks/.ssh/pa-chicks.pem
