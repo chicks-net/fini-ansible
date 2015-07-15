@@ -4,12 +4,6 @@
 - name: git clone chicks smokeping config
   git: repo={{ smokeping_config_chicks_git }} dest={{ smokeping_config_chicks_dir }} accept_hostkey=yes
 
-- name: git clone pare
-  git: repo={{ smokeping_config_pa_git }} dest={{ smokeping_config_pa_dir }} accept_hostkey=yes
-
 - name: smokeping_secrets for chicks
   template: src=smokeping_secrets.j2 dest="{{ smokeping_config_chicks_dir }}/smokeping_secrets" owner=chicks mode=0600 
-
-- name: smokeping_secrets for pare
-  template: src=smokeping_secrets.j2 dest="{{ smokeping_config_pa_link_dir }}/smokeping_secrets" owner=chicks mode=0600 
 

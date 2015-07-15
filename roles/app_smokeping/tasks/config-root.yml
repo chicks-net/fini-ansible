@@ -13,10 +13,8 @@
 - name: save stock smokeping config
   shell: "mv {{ smokeping_config_dir }} /etc/smokeping.as_installed"
 
-# TODO: configurable switch between PA and chicks config
-
 - name: symlink /etc/smokeping
-  file: src={{ smokeping_config_pa_link_dir }} dest={{ smokeping_config_dir }} state=link
+  file: src={{ smokeping_config_chicks_dir }} dest={{ smokeping_config_dir }} state=link
 
 #
 # apache config
