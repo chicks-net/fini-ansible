@@ -4,13 +4,19 @@ boo.fini.net
 ralph.fini.net
 
 [desktop]
-graphite.chicks.net
 silver.chicks.net
 rotten.chicks.net
 c64.chicks.net
 panda.chicks.net
 
+[laptop]
+graphite.chicks.net
+realcrab.chicks.net # Uber
+
 [mocentric-dev]
 dev0.mocentric.com
 
 # hostname ansible_ssh_host= ansible_ssh_private_key_file=
+
+[fini-dev]
+west01.chicks.net ansible_ssh_host=104.131.159.21
