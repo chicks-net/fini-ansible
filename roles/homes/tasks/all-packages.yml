@@ -23,9 +23,9 @@
    - git
    - git-svn
 # epel   - ansible
-# repoforge   - tmux
+   - tmux
    - screen
-   - jwhois
+   - whois
    - traceroute
    - mtr
    - curl
