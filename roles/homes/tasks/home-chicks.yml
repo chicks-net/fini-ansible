@@ -3,6 +3,10 @@
 - name: default fact our_key_comment
   set_fact: our_key_comment="chicks@{{ ansible_hostname }}"
 
+- name: group chicks in centos/rhel
+  when: ansible_distribution == 'CentOS'
+  group: name="{{ chicks_group }}" state=present
+
 - name: user chicks in opsworks
   when: ansible_distribution == 'Ubuntu'
   user: name=chicks uid=2015 comment="Christopher Hicks" generate_ssh_key=yes ssh_key_bits=4096 ssh_key_comment="{{ our_key_comment }}"
