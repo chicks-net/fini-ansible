@@ -1,0 +1,18 @@
+---
+# This playbook creates lundin' home directory
+- name: default fact our_key_comment
+  set_fact: our_key_comment="lundin@{{ ansible_hostname }}"
+
+- name: group lundin in centos/rhel
+  when: ansible_distribution == 'CentOS'
+  group: name="{{ lundin_group }}" state=present
+
+- name: user lundin in centos/rhel
+  when: ansible_distribution == 'CentOS'
+  user: name=lundin uid=501 group="{{ lundin_group }}" comment="John Lundin" generate_ssh_key=yes ssh_key_bits=4096 ssh_key_comment="{{ our_key_comment }}"
+
+- name: lundin in sudoers
+  lineinfile: "dest=/etc/sudoers state=present line='lundin      ALL=(ALL)  NOPASSWD:ALL'"
+
+- name: lundin authorized_keys
+  copy: src=ssh_accepted.lundin dest=/home/lundin/.ssh/authorized_keys owner=lundin

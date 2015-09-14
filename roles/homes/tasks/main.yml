@@ -19,3 +19,19 @@
 - include: chicks-perms.yml
 - include: chicks-repos.yml
   sudo: no
+
+#
+# lundin
+#
+- name: default fact lundin_group
+  set_fact: lundin_group="lundin"
+- name: opsworks fact lundin_group
+  set_fact: lundin_group="opsworks"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: stat /home/lundin/.git
+  stat: path="/home/lundin/.git"
+  register: lundin_home_dot_git
+- include: home-lundin.yml
+  when: lundin_home_dot_git.stat.exists is defined and not lundin_home_dot_git.stat.exists
+
