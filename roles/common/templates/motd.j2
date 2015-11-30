@@ -1,0 +1,10 @@
+This system is managed by Ansible.
+
+OS          : {{ ansible_distribution }} {{ ansible_distribution_version }}
+Hostname    : {{ ansible_hostname }}
+IP address  : {{ ansible_default_ipv4.address }}
+System type : {{ ansible_system }}
+
+This service is restricted to authorized users only.  All activities on this system are logged.
+
+

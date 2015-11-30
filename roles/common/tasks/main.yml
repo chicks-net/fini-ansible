@@ -1,0 +1,3 @@
+# Common server tasks
+#
+- include: motd.yml
