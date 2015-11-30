@@ -18,7 +18,8 @@
 
 - include: chicks-perms.yml
 - include: chicks-repos.yml
-  sudo: no
+  become: yes
+  become_user: chicks
 
 #
 # lundin
