@@ -1,8 +1,9 @@
 ---
 # This playbook creates chicks home directory based on github
 
-- hosts: $servername
-  sudo: True
+- hosts: "{{ servername }}"
+  become: True
+  become_user: root
   roles:
    - homes
    - dumpall
