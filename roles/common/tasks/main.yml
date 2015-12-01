@@ -1,3 +1,4 @@
 # Common server tasks
 #
 - include: motd.yml
+- include: packages.yml
