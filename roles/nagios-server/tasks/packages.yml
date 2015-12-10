@@ -1,0 +1,15 @@
+---
+# This playbook installs epel-release and nagios (server)
+- name: check for CentOS
+  fail: msg="only for CentOS"
+  when: ansible_distribution <> 'CentOS'
+#
+- name: install epel-release
+  yum: name="epel-release" state=present
+  when: ansible_distribution == 'CentOS'
+#
+- name: install rpm's only in EPEL
+  yum: name={{ item }} state=present
+  when: ansible_distribution == 'CentOS'
+  with_items:
+   - nagios

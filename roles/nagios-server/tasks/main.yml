@@ -1,0 +1,3 @@
+# install nagios server
+
+- include: packages.yml

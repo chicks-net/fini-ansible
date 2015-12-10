@@ -1,0 +1,12 @@
+---
+# This playbook installs nagios (server)
+
+- hosts: "{{ servername }}"
+#   - nag01.sepi.fini.net
+#   - nag02.sepi.fini.net
+#   - nag03.sepi.fini.net
+  remote_user: root
+  roles:
+   - common
+   - nagios-server
+   - dumpall
