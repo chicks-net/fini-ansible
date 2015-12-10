@@ -31,3 +31,4 @@
    - curl
    - wget
    - pcre
+   - vim-enhanced
