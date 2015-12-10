@@ -1,0 +1,22 @@
+---
+# This playbook sets up chicks' stock repos
+# clone once
+- name: stat /etc/nagios
+  stat: path="/etc/nagios"
+  register: etc_nagios
+- name: stat /etc/nagios/.git
+  stat: path="/etc/nagios/.git"
+  register: etc_nagios_git
+#- name: git clone chicks-dnetc
+#  include: chicks-dnetc.yml
+#  when: home_docs_dnetc.stat.exists is defined and not home_docs_dnetc.stat.exists
+- name: mv rpm /etc/nagios out of the way
+  shell: mv /etc/nagios /etc/nagios.orig_rpm
+  when: etc_nagios.stat.exists is defined and etc_nagios.stat.exists and etc_nagios_git.stat.exists is defined and not etc_nagios_git.stat.exists
+
+- name: /etc/nagios ownership
+  file: path=/etc/nagios state=directory owner=chicks group=chicks mode=0750
+
+- name: git clone fini-nagios-conf
+  become_user: chicks
+  git: repo=ssh://git@github.com/chicks-net/fini-nagios-conf.git dest=/etc/nagios update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
