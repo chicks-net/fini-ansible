@@ -11,8 +11,8 @@ panda.chicks.net
 
 [fini-dev]
 west01.chicks.net ansible_ssh_host=104.131.159.21
-test00.sepi.fini.net ansible_ssh_host=162.243.77.5 ansible_ssh_private_key_file=~chicks/.ssh/id_do_sepisolar
 test01.sepi.fini.net ansible_ssh_host=104.236.133.17 ansible_ssh_private_key_file=~chicks/.ssh/id_do_sepisolar
+nag00.sepi.fini.net ansible_ssh_host=198.199.105.99 ansible_ssh_private_key_file=~chicks/.ssh/id_do_sepisolar
 
 [laptop]
 graphite.chicks.net
