@@ -15,8 +15,14 @@
   when: etc_nagios.stat.exists is defined and etc_nagios.stat.exists and etc_nagios_git.stat.exists is defined and not etc_nagios_git.stat.exists
 
 - name: /etc/nagios ownership
-  file: path=/etc/nagios state=directory owner=chicks group=chicks mode=0750
+  file: path=/etc/nagios state=directory owner=chicks group=nagios mode=0770
 
 - name: git clone fini-nagios-conf
   become_user: chicks
+  become: true
   git: repo=ssh://git@github.com/chicks-net/fini-nagios-conf.git dest=/etc/nagios update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
+
+- name: git clone nagios-plugins
+  become_user: chicks
+  become: true
+  git: repo=ssh://git@github.com/fini-net/nagios-plugins.git dest=/home/chicks/nagios-plugins update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
