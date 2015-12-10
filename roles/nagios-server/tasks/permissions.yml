@@ -1,0 +1,10 @@
+---
+# This playbook sets up nagios permissions
+#- name: /etc/nagios ownership
+#  file: path=/etc/nagios state=directory owner=chicks group=nagios mode=0770
+
+- name: /var/log/nagios ownership
+  file: path=/var/log/nagios state=directory owner=nagios group=nagios mode=0775
+
+- name: /var/log/nagios/rw ownership
+  file: path=/var/log/nagios/rw state=directory owner=nagios group=nagios mode=0770

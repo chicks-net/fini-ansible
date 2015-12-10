@@ -1,0 +1,2 @@
+nagios_etc: /etc/nagios
+nagios_plugins: /usr/lib64/nagios/plugins

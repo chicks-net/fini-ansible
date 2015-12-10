@@ -1,4 +1,5 @@
 # install nagios server
 
 - include: packages.yml
+- include: permissions.yml
 - include: git_repos.yml
