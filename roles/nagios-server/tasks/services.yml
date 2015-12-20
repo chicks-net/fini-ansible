@@ -1,0 +1,7 @@
+---
+# This playbook enables services for nagios-server
+- name: chkconfig httpd on
+  service: name=httpd enabled=yes
+
+- name: chkconfig nagios-server on
+  service: name=nagios enabled=yes

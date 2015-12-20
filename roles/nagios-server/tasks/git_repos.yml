@@ -1,6 +1,7 @@
 ---
-# This playbook sets up chicks' stock repos
-# clone once
+# This playbook sets up git repos
+#
+# clone once /etc/nagios
 - name: stat /etc/nagios
   stat: path={{ nagios_etc }}
   register: etc_nagios
@@ -20,6 +21,10 @@
   become: true
   git: repo=ssh://git@github.com/chicks-net/fini-nagios-conf.git dest={{ nagios_etc }}  update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
 
+#
+# plugins
+#
+
 - name: /usr/lib64/nagios/plugins ownership
   file: path={{ nagios_plugins }} state=directory owner=chicks group=nagios mode=0770
 
@@ -30,3 +35,6 @@
   become_user: chicks
   become: true
   git: repo=ssh://git@github.com/fini-net/nagios-plugins.git dest=/usr/lib64/nagios/plugins update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
+
+- name: symlink plugins-conf
+  file: src={{ nagios_plugins }}/config dest={{ nagios_etc }}/plugins-cfg state=link

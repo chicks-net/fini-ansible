@@ -3,3 +3,4 @@
 - include: packages.yml
 - include: permissions.yml
 - include: git_repos.yml
+- include: services.yml
