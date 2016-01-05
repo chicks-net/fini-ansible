@@ -8,16 +8,19 @@
 * [app_smokeping](roles/app_smokeping)
 * [app_iperf](roles/app_iperf)
 * [homes](roles/homes)
-* [ocs-inventory](roles/ocs-inventory) - installs OCS::Inventory
+* [app_ocs-inventory](roles/app_ocs-inventory) - installs OCS::Inventory
+
+## incomplete  roles
+* [app_nagios-server](roles/app_nagios-server)
+* [sys_apache](roles/sys_apache)
 
 ## planned roles
 
-* [app_nagios](roles/app_nagios)
+* [sys_nagios-client](roles/sys_nagios-client)
 * [sys_bind](roles/sys_bind)
 * [app_bugzilla](roles/app_bugzilla)
 * [app_openwebmail](roles/app_openwebmail)
 * [sys_postfix](roles/sys_postfix)
-* [sys_apache](roles/sys_apache)
 * [sys_mysql](roles/sys_mysql) - generalizing mysql goodness from [ocs-inventory](roles/ocs-inventory)
 
 ## role naming
