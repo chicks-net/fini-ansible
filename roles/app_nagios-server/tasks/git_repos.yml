@@ -19,7 +19,7 @@
 - name: git clone fini-nagios-conf
   become_user: chicks
   become: true
-  git: repo=ssh://git@github.com/chicks-net/fini-nagios-conf.git dest={{ nagios_etc }}  update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
+  git: repo=ssh://git@github.com/fini-net/fini-nagios-conf.git dest={{ nagios_etc }} update=no accept_hostkey=yes key_file=/home/chicks/.ssh/id_rsa
 
 #
 # plugins
