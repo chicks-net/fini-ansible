@@ -26,6 +26,6 @@
 ## role naming
 
 * `app_*` roles are for things that consume a port (usually 80)
-* `sys_*` roles are for things underlying services that either do not consume a port or generally are expected to function in the background and not comsume and entire machine.
+* `sys_*` roles are for things underlying services that either do not consume a port or generally are expected to function in the background and not comsume an entire machine.
 * `meta_*` roles are helpful in ansible for gathering information, but don't install software
 * this repo does not fully conform to this standard yet (TODO)
