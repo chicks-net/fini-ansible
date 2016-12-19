@@ -2,25 +2,26 @@
 
 [FINI](http://www.fini.net/) ansible playbooks
 
-## roles
+## working roles
 
+* [homes](roles/homes) - setup sysadmin home directories and common files
 * [dumpall](roles/dumpall) - dump ansible variable space into `/tmp/amsible.all`
-* [app_smokeping](roles/app_smokeping)
-* [app_iperf](roles/app_iperf)
-* [homes](roles/homes)
+* [app_iperf](roles/app_iperf) - install iperf
 * [app_ocs-inventory](roles/app_ocs-inventory) - installs OCS::Inventory
+* [app_smokeping](roles/app_smokeping) - install smokeping
 
-## incomplete  roles
-* [app_nagios-server](roles/app_nagios-server)
-* [sys_apache](roles/sys_apache)
+## incomplete roles
+
+* [app_nagios-server](roles/app_nagios-server) - install nagios server
+* [sys_apache](roles/sys_apache) - install apache httpd
 
 ## planned roles
 
-* [sys_nagios-client](roles/sys_nagios-client)
-* [sys_bind](roles/sys_bind)
-* [app_bugzilla](roles/app_bugzilla)
-* [app_openwebmail](roles/app_openwebmail)
-* [sys_postfix](roles/sys_postfix)
+* [sys_nagios-client](roles/sys_nagios-client) - install nagios client
+* [sys_bind](roles/sys_bind) - install ISC DHCP
+* [app_bugzilla](roles/app_bugzilla) - install bugzilla
+* [app_openwebmail](roles/app_openwebmail) - install OpenWebMail
+* [sys_postfix](roles/sys_postfix) - install postfix
 * [sys_mysql](roles/sys_mysql) - generalizing mysql goodness from [ocs-inventory](roles/ocs-inventory)
 
 ## role naming
