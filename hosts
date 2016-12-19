@@ -8,16 +8,13 @@ mon00.fini.net
 silver.chicks.net
 rotten.chicks.net
 c64.chicks.net
-panda.chicks.net
+panda.chicks.net # ?
 
 [fini-dev]
-west01.chicks.net ansible_ssh_host=104.131.159.21
 test01.sepi.fini.net ansible_ssh_host=104.236.133.17 ansible_ssh_private_key_file=~chicks/.ssh/id_do_sepisolar
-nag00.sepi.fini.net ansible_ssh_host=198.199.105.99 ansible_ssh_private_key_file=~chicks/.ssh/id_do_sepisolar
 
 [laptop]
 graphite.chicks.net
-crabapple42.chicks.net # Uber
 
 [mocentric-dev]
 dev0.mocentric.com
