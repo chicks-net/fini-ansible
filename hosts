@@ -11,12 +11,9 @@ c64.chicks.net
 panda.chicks.net # ?
 
 [fini-dev]
-test01.sepi.fini.net ansible_ssh_host=104.236.133.17 ansible_ssh_private_key_file=~chicks/.ssh/id_do_sepisolar
+c7d.fini.net ansible_ssh_host=159.89.151.222 ansible_ssh_private_key_file=~chicks/.ssh/rsa_dig_ocn_2018
 
 [laptop]
 graphite.chicks.net
-
-[mocentric-dev]
-dev0.mocentric.com
 
 # hostname ansible_ssh_host= ansible_ssh_private_key_file=
