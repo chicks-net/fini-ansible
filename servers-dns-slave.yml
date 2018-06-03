@@ -1,0 +1,30 @@
+# build a DNS server slave
+- hosts: c7d.fini.net
+  vars:
+    os_ignore_users:
+      - lundin
+      - chicks
+    ssh_allow_root_with_key: true
+    datadog_api_key: "{{ lookup('file', 'datadog.key') }}"
+    datadog_config:
+      tags: "region:digitalocean, env:dev"
+    datadog_checks:
+      process:
+        init_config:
+        instances:
+          - name: ssh
+            search_string: ['ssh', 'sshd' ]
+  pre_tasks:
+  - name: get roles from galaxy
+    shell: ansible-galaxy install "{{ item }}"
+    delegate_to: 127.0.0.1
+    loop:
+      - dev-sec.os-hardening
+      - dev-sec.ssh-hardening
+      - Datadog.datadog
+  roles:
+    - common
+    - homes
+    - dev-sec.os-hardening
+    - dev-sec.ssh-hardening
+    - Datadog.datadog
