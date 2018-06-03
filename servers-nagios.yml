@@ -9,4 +9,3 @@
   roles:
    - common
    - app_nagios-server
-   - dumpall

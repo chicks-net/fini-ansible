@@ -3,8 +3,6 @@
 
 - hosts: "{{ servername }}"
   remote_user: root
-#  sudo: True
   roles:
    - common
    - homes
-   - dumpall

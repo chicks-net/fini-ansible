@@ -5,4 +5,3 @@
 #  sudo: True
   roles:
    - app_smokeping
-   - dumpall
