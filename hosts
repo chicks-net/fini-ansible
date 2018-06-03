@@ -11,7 +11,7 @@ c64.chicks.net
 panda.chicks.net # ?
 
 [fini-dev]
-c7d.fini.net ansible_ssh_host=159.89.151.222 ansible_ssh_private_key_file=~chicks/.ssh/rsa_dig_ocn_2018
+c7d.fini.net ansible_host=159.89.151.222 ansible_ssh_private_key_file=~chicks/.ssh/rsa_dig_ocn_2018 ansible_user=root
 
 [laptop]
 graphite.chicks.net
