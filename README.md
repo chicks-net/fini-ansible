@@ -21,6 +21,6 @@
 * `meta_*` roles are helpful in ansible for gathering information, but don't install software
 * this repo does not fully conform to this standard yet (TODO)
 
-##
+## future
 
 * see [TODO](TODO.md) for future plans
