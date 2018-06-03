@@ -1,0 +1,16 @@
+- hosts: c7d.fini.net
+  vars:
+    os_ignore_users:
+      - lundin
+      - chicks
+    ssh_allow_root_with_key: true
+  pre_tasks:
+  - name: get roles from galaxy
+    shell: ansible-galaxy install "{{ item }}"
+    delegate_to: 127.0.0.1
+    loop:
+      - dev-sec.os-hardening
+      - dev-sec.ssh-hardening
+  roles:
+    - dev-sec.os-hardening
+    - dev-sec.ssh-hardening
