@@ -54,3 +54,6 @@ docs/_build/
 
 # Keys to Kingdoms
 *.key
+
+# Ansible retries
+*.retry
