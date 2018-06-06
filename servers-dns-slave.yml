@@ -14,6 +14,56 @@
         instances:
           - name: ssh
             search_string: ['ssh', 'sshd' ]
+    bind_config_slave_zones:
+            - name: FINI domain slaves/secondaries
+              masters: [ '198.57.196.94' ]
+              zones:
+                - 143.166.205.in-addr.arpa
+                - almanacvapolitics.org
+                - bayo.net
+                - bettywalls.com
+                - cac-medmal.com
+                - chicks.net
+                - cmanuel.com
+                - cmanuel.net
+                - cmanuel.org
+                - denbighbaptist.com
+                - denbighbaptist.org
+                - einteractive.com
+                - fini.net
+                - finicase.com
+                - finicase.net
+                - finicase.org
+                - finilever.com
+                - finilever.net
+                - finilever.org
+                - frommyperspective.org
+                - gamal.info
+                - gaminggecko.net
+                - gasp.org
+                - in-fini-tees.com
+                - in-fini-tees.net
+                - infinitees.net
+                - infinitees.org
+                - ireserve.info
+                - ireserve.us
+                - jenniferwinter.com
+                - jiffie.net
+                - karlabranen.com
+                - nodrats.com
+                - partnersforjustice.com
+                - partweb.com
+                - patentattorneysearch.net
+                - perlclass.com
+                - perlclass.net
+                - perlclass.org
+                - perlclasses.com
+                - perlclasses.net
+                - perlclasses.org
+                - politicsvirginia.org
+                - qwp.org
+                - seaprojects.org
+                - vccinc.net
   pre_tasks:
   - name: get roles from galaxy
     shell: ansible-galaxy install "{{ item }}"
@@ -28,3 +78,4 @@
     - dev-sec.os-hardening
     - dev-sec.ssh-hardening
     - Datadog.datadog
+    - resmo.bind
