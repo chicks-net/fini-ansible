@@ -14,56 +14,54 @@
         instances:
           - name: ssh
             search_string: ['ssh', 'sshd' ]
-    bind_config_slave_zones:
-            - name: FINI domain slaves/secondaries
-              masters: [ '198.57.196.94' ]
-              zones:
-                - 143.166.205.in-addr.arpa
-                - almanacvapolitics.org
-                - bayo.net
-                - bettywalls.com
-                - cac-medmal.com
-                - chicks.net
-                - cmanuel.com
-                - cmanuel.net
-                - cmanuel.org
-                - denbighbaptist.com
-                - denbighbaptist.org
-                - einteractive.com
-                - fini.net
-                - finicase.com
-                - finicase.net
-                - finicase.org
-                - finilever.com
-                - finilever.net
-                - finilever.org
-                - frommyperspective.org
-                - gamal.info
-                - gaminggecko.net
-                - gasp.org
-                - in-fini-tees.com
-                - in-fini-tees.net
-                - infinitees.net
-                - infinitees.org
-                - ireserve.info
-                - ireserve.us
-                - jenniferwinter.com
-                - jiffie.net
-                - karlabranen.com
-                - nodrats.com
-                - partnersforjustice.com
-                - partweb.com
-                - patentattorneysearch.net
-                - perlclass.com
-                - perlclass.net
-                - perlclass.org
-                - perlclasses.com
-                - perlclasses.net
-                - perlclasses.org
-                - politicsvirginia.org
-                - qwp.org
-                - seaprojects.org
-                - vccinc.net
+    bind_zone_master_server_ip: 198.57.196.94
+    bind_zone_domains:
+      - name: 143.166.205.in-addr.arpa
+      - name: almanacvapolitics.org
+      - name: bayo.net
+      - name: bettywalls.com
+      - name: cac-medmal.com
+      - name: chicks.net
+      - name: cmanuel.com
+      - name: cmanuel.net
+      - name: cmanuel.org
+      - name: denbighbaptist.com
+      - name: denbighbaptist.org
+      - name: einteractive.com
+      - name: fini.net
+      - name: finicase.com
+      - name: finicase.net
+      - name: finicase.org
+      - name: finilever.com
+      - name: finilever.net
+      - name: finilever.org
+      - name: frommyperspective.org
+      - name: gamal.info
+      - name: gaminggecko.net
+      - name: gasp.org
+      - name: in-fini-tees.com
+      - name: in-fini-tees.net
+      - name: infinitees.net
+      - name: infinitees.org
+      - name: ireserve.info
+      - name: ireserve.us
+      - name: jenniferwinter.com
+      - name: jiffie.net
+      - name: karlabranen.com
+      - name: nodrats.com
+      - name: partnersforjustice.com
+      - name: partweb.com
+      - name: patentattorneysearch.net
+      - name: perlclass.com
+      - name: perlclass.net
+      - name: perlclass.org
+      - name: perlclasses.com
+      - name: perlclasses.net
+      - name: perlclasses.org
+      - name: politicsvirginia.org
+      - name: qwp.org
+      - name: seaprojects.org
+      - name: vccinc.net
   pre_tasks:
   - name: get roles from galaxy
     shell: ansible-galaxy install "{{ item }}"
@@ -78,4 +76,4 @@
     - dev-sec.os-hardening
     - dev-sec.ssh-hardening
     - Datadog.datadog
-    - resmo.bind
+    - bertvv.bind
