@@ -2,7 +2,7 @@
 This system is managed by Ansible.
 
 OS          : {{ ansible_distribution }} {{ ansible_distribution_version }}
-Hostname    : {{ ansible_hostname }}
+Hostname    : {{ ansible_fqdn }}
 IP address  : {{ ansible_default_ipv4.address }} ({{ ansible_default_ipv4.alias }}) {{ ansible_default_ipv4.macaddress }}
 System type : {{ ansible_system }} {{ ansible_userspace_architecture }} ({{ ansible_userspace_bits }} bits)
 Memory (MB) : {{ ansible_memtotal_mb }}

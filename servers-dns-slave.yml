@@ -18,6 +18,7 @@
     datadog_api_key: "{{ lookup('file', 'datadog.key') }}"
     datadog_config:
       tags: "region:digitalocean, env:dev"
+      hostname: "{{ ansible_fqdn }}"
     datadog_checks:
       process:
         init_config:
