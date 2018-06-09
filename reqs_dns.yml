@@ -1,6 +1,8 @@
-# security
+# security: hardening
 - src: dev-sec.os-hardening
 - src: dev-sec.ssh-hardening
+# security: iptables
+- src: geerlingguy.firewall
 # datadog
 - src: Datadog.datadog
 # DNS server
