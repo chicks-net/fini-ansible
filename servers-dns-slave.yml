@@ -24,6 +24,9 @@
         instances:
           - name: ssh
             search_string: ['ssh', 'sshd' ]
+    ### DNS slave
+    bind_listen_ipv4: ['any']
+    bind_allow_query: ['any']
     bind_zone_master_server_ip: 198.57.196.94
     bind_zone_domains:
       - name: 143.166.205.in-addr.arpa
