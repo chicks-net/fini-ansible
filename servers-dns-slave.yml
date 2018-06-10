@@ -1,7 +1,7 @@
 #
 # build a DNS server slave
 #
-- hosts: c7d.fini.net
+- hosts: katie.fini.net
   vars:
     ### hardening
     os_ignore_users:
@@ -17,7 +17,7 @@
     ### datadog
     datadog_api_key: "{{ lookup('file', 'datadog.key') }}"
     datadog_config:
-      tags: "region:digitalocean, env:dev"
+      tags: "region:digitalocean, env:prod"
       hostname: "{{ ansible_fqdn }}"
     datadog_checks:
       process:
