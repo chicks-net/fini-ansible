@@ -1,5 +1,7 @@
 # fini-ansible
 
+![Maintenance](https://img.shields.io/maintenance/no/2018)
+
 [FINI](http://www.fini.net/) ansible playbooks
 
 ## working roles
